@@ -1,0 +1,6 @@
+{
+  "name": "Glušič Transport & Logistika",
+  "description": "Uradna spletna stran podjetja Glušič - storitve, vozni park in kontakt.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
