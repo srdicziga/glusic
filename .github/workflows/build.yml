@@ -44,6 +44,7 @@ jobs:
         run: |
           npm run build
           mkdir -p cpanel/assets
+          rm -f cpanel/assets/index-*
           cp dist/index.html cpanel/index.html
           cp -R dist/assets/index-* cpanel/assets/
           git checkout package.json

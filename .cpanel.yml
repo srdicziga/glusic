@@ -1,8 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/$USER/public_html/
-    - /bin/cp -R public/* $DEPLOYPATH
-    - /bin/cp -R cpanel/* $DEPLOYPATH
-    - /bin/cp cpanel/.htaccess $DEPLOYPATH 2>/dev/null || true
-    - if [ -d "dist" ]; then /bin/cp -R dist/* $DEPLOYPATH; fi
+    - export DEPLOYPATH=$HOME/glusic.webkat.si/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -Rf public/* $DEPLOYPATH
+    - /bin/cp -Rf cpanel/* $DEPLOYPATH
+    - /bin/cp -f cpanel/.htaccess $DEPLOYPATH
