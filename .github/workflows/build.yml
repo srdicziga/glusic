@@ -1,4 +1,4 @@
-name: Build Production Dist for cPanel
+name: Build Production Bundle for cPanel
 
 on:
   push:
@@ -21,15 +21,37 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Normalize package.json versions for public npm registry
+        run: |
+          node -e '
+            const fs = require("fs");
+            const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+            delete pkg.dependencies["@google/genai"];
+            pkg.dependencies["vite"] = "^6.2.0";
+            pkg.dependencies["@vitejs/plugin-react"] = "^4.3.4";
+            pkg.dependencies["@tailwindcss/vite"] = "^4.0.9";
+            pkg.devDependencies["tailwindcss"] = "^4.0.9";
+            pkg.devDependencies["typescript"] = "^5.7.2";
+            pkg.devDependencies["@types/react"] = "^19.0.0";
+            pkg.devDependencies["@types/react-dom"] = "^19.0.0";
+            fs.writeFileSync("package.json", JSON.stringify(pkg, null, 2));
+          '
+
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-audit --no-fund
 
       - name: Build production bundle
-        run: npm run build
+        run: |
+          npm run build
+          mkdir -p cpanel/assets
+          cp dist/index.html cpanel/index.html
+          cp -R dist/assets/index-* cpanel/assets/
+          git checkout package.json
+          rm -f package-lock.json
 
-      - name: Commit and push updated dist folder
+      - name: Commit and push dist and cpanel folders
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -f dist
-          git diff --staged --quiet || (git commit -m "chore: update production dist for cPanel [skip ci]" && git push)
+          git add -f dist cpanel
+          git diff --staged --quiet || (git commit -m "chore: build dist and cpanel bundle [skip ci]" && git push)

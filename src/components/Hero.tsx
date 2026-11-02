@@ -14,7 +14,7 @@ export default function Hero() {
       {/* Full-Screen Hero Image Layer */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/assets/aistudio/White_MAN_Truck_by_Warehouse_61d8c733.png"
+          src="/assets/aistudio/White_MAN_Truck_by_Warehouse_ac757625.png"
           alt={t.hero.imageAlt}
           className="h-full w-full object-cover object-[72%_center] sm:object-[68%_center] lg:object-center select-none"
           draggable={false}
