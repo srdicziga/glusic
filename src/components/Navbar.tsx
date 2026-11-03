@@ -198,7 +198,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-b border-[#d5e1ee] bg-white/95 backdrop-blur-sm py-4 px-2 space-y-2">
+          <div className="md:hidden -mx-4 sm:-mx-8 px-4 sm:px-8 border-b border-[#d5e1ee] bg-white/98 backdrop-blur-md py-4 space-y-2 shadow-[0_12px_24px_rgba(11,22,44,0.08)]">
             <nav className="flex flex-col space-y-1">
               {navItems.map((item) => (
                 <a
@@ -208,7 +208,7 @@ export default function Navbar() {
                     setMobileMenuOpen(false);
                     scrollToSection(item.id, e);
                   }}
-                  className="px-3 py-2.5 text-[16px] font-medium text-[#13203B] hover:text-[#2274B8] transition-colors cursor-pointer"
+                  className="px-3 py-2.5 rounded-md text-[16px] font-medium text-[#13203B] hover:text-[#2274B8] hover:bg-[#F0F7FF] transition-colors cursor-pointer"
                 >
                   {item.label}
                 </a>
