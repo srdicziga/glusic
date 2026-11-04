@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from '../i18n';
 
 function ReliabilityShieldIcon() {
@@ -256,6 +256,9 @@ function CargoCareIcon() {
 
 export default function WhyChooseUs() {
   const { t } = useLanguage();
+  const statsRef = useRef<HTMLDivElement>(null);
+  const [hasStarted, setHasStarted] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const features = [
     {
@@ -287,20 +290,78 @@ export default function WhyChooseUs() {
   const stats = [
     {
       id: 'experience',
-      value: '10+',
+      target: 10,
+      suffix: '+',
       label: t.whyChooseUs.stats.experience,
     },
     {
       id: 'accuracy',
-      value: '100 %',
+      target: 100,
+      suffix: ' %',
       label: t.whyChooseUs.stats.accuracy,
     },
     {
       id: 'clients',
-      value: '1000+',
+      target: 1000,
+      suffix: '+',
       label: t.whyChooseUs.stats.clients,
     },
   ];
+
+  useEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          setHasStarted(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) return;
+
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setProgress(1);
+      return;
+    }
+
+    const duration = 2000; // Synchronized 2-second animation
+    let startTime: number | null = null;
+    let animationFrameId: number;
+
+    const step = (now: number) => {
+      if (!startTime) startTime = now;
+      const elapsed = now - startTime;
+      const linearProgress = Math.min(elapsed / duration, 1);
+
+      // Smooth ease-out cubic: fast responsive start, natural deceleration, finishes synchronously at 1.0
+      const eased = 1 - Math.pow(1 - linearProgress, 3);
+      setProgress(eased);
+
+      if (linearProgress < 1) {
+        animationFrameId = requestAnimationFrame(step);
+      } else {
+        setProgress(1);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(step);
+    return () => {
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+  }, [hasStarted]);
 
   return (
     <section
@@ -362,25 +423,32 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Statistics Module Below Feature Cards */}
-        <div className="mt-6 sm:mt-8 rounded-[16px] bg-white border border-[#E4ECF5] shadow-[0_12px_32px_-8px_rgba(14,30,62,0.08),0_4px_12px_-2px_rgba(14,30,62,0.03)] px-6 py-6 sm:py-7">
+        <div
+          ref={statsRef}
+          className="mt-6 sm:mt-8 rounded-[16px] bg-white border border-[#E4ECF5] shadow-[0_12px_32px_-8px_rgba(14,30,62,0.08),0_4px_12px_-2px_rgba(14,30,62,0.03)] px-6 py-6 sm:py-7"
+        >
           <div className="grid grid-cols-1 sm:grid-cols-3 items-center">
-            {stats.map((stat, index) => (
-              <div
-                key={stat.id}
-                className={`relative flex flex-col items-center justify-center text-center py-4 sm:py-1.5 ${
-                  index !== 0
-                    ? 'border-t border-[#E8EEF4] sm:border-t-0 sm:border-l sm:border-[#E6ECF2]'
-                    : ''
-                }`}
-              >
-                <span className="text-[32px] sm:text-[36px] lg:text-[40px] font-extrabold text-[#0B162C] leading-[1.1] tracking-[-0.02em] tabular-nums">
-                  {stat.value}
-                </span>
-                <span className="mt-1.5 text-[15px] sm:text-[16px] font-normal text-[#6E7683]">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
+            {stats.map((stat, index) => {
+              const currentVal = Math.round(progress * stat.target);
+              return (
+                <div
+                  key={stat.id}
+                  className={`relative flex flex-col items-center justify-center text-center py-4 sm:py-1.5 ${
+                    index !== 0
+                      ? 'border-t border-[#E8EEF4] sm:border-t-0 sm:border-l sm:border-[#E6ECF2]'
+                      : ''
+                  }`}
+                >
+                  <span className="text-[32px] sm:text-[36px] lg:text-[40px] font-extrabold text-[#0B162C] leading-[1.1] tracking-[-0.02em] tabular-nums">
+                    {currentVal}
+                    {stat.suffix}
+                  </span>
+                  <span className="mt-1.5 text-[15px] sm:text-[16px] font-normal text-[#6E7683]">
+                    {stat.label}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

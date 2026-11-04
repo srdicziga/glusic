@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronDown, Phone } from 'lucide-react';
 import { useLanguage, SITE_TRANSLATIONS, Language } from '../i18n';
 
 export function GlusicLogo({
@@ -174,24 +174,49 @@ export default function Navbar() {
           {/* Mobile Hamburger Trigger */}
           <div className="flex md:hidden items-center gap-2">
             <a
-              href="https://www.facebook.com/profile.php?id=100048681625087"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Glušič Facebook stran"
-              className="p-2 text-[#13203B] hover:text-[#2274B8] transition-colors cursor-pointer"
+              href="tel:031340920"
+              aria-label="Pokličite nas: 031 340 920"
+              className="p-2 inline-flex items-center justify-center text-black hover:opacity-75 transition-opacity cursor-pointer focus:outline-none"
             >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M15.12 5.32H17V2.14A26.11 26.11 0 0 0 14.26 2c-2.72 0-4.58 1.66-4.58 4.7v2.62H6.61v3.56h3.07V22h3.68v-9.12h3.06l.46-3.56h-3.52V6.65c0-1.05.29-1.73 1.76-1.73Z" />
-              </svg>
+              <Phone className="w-5 h-5 fill-black stroke-black stroke-[1]" />
             </a>
             <button
               type="button"
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-label={t.nav.openMenu}
               aria-expanded={mobileMenuOpen}
-              className="p-2 text-[#13203B] hover:text-[#2274B8] focus:outline-none cursor-pointer"
+              className="w-10 h-10 inline-flex items-center justify-center rounded-lg bg-white/75 hover:bg-white border border-[#13203B]/10 hover:border-[#2274B8]/30 text-[#13203B] hover:text-[#2274B8] shadow-2xs transition-all cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2274B8]"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <svg
+                  className="w-5 h-5 transition-transform duration-200"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M18 6L6 18" />
+                  <path d="M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg
+                  className="w-5 h-5 transition-transform duration-200"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M4 7h16" />
+                  <path d="M4 12h11" />
+                  <path d="M4 17h16" />
+                </svg>
+              )}
             </button>
           </div>
         </div>

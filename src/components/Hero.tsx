@@ -99,11 +99,11 @@ export default function Hero() {
             </p>
 
             {/* Action Buttons */}
-            <div className="mt-6 sm:mt-10 flex flex-nowrap sm:flex-wrap items-center gap-2.5 sm:gap-4">
+            <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
               <a
                 href="#kontakt"
                 onClick={(e) => scrollToSection('kontakt', e)}
-                className="group inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-[10px] bg-gradient-to-r from-[#0B84E5] to-[#0073D6] px-3.5 sm:px-6 py-3 sm:py-3.5 text-[13.5px] sm:text-[16px] font-medium text-white shadow-[0_6px_18px_rgba(11,132,229,0.26)] hover:from-[#0975ce] hover:to-[#0063b8] transition-all duration-150 whitespace-nowrap shrink-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B84E5] focus-visible:ring-offset-2"
+                className="group inline-flex items-center justify-center gap-2 rounded-[10px] bg-gradient-to-r from-[#0B84E5] to-[#0073D6] w-full sm:w-auto px-6 py-3.5 text-[15px] sm:text-[16px] font-medium text-white shadow-[0_6px_18px_rgba(11,132,229,0.26)] hover:from-[#0975ce] hover:to-[#0063b8] transition-all duration-150 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0B84E5] focus-visible:ring-offset-2"
               >
                 <span>{t.hero.ctaPrimary}</span>
                 <ArrowUpRight className="w-4 h-4 sm:w-[18px] sm:h-[18px] stroke-[2.2] transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -112,7 +112,7 @@ export default function Hero() {
               <a
                 href="#storitve"
                 onClick={(e) => scrollToSection('storitve', e)}
-                className="inline-flex items-center justify-center rounded-[10px] border-[1.5px] border-[#1B7EC8] bg-white sm:bg-white/65 backdrop-blur-[2px] px-3.5 sm:px-6 py-3 sm:py-3.5 text-[13.5px] sm:text-[16px] font-medium text-[#126FB5] hover:bg-white hover:border-[#0B84E5] hover:text-[#0B84E5] transition-all duration-150 whitespace-nowrap shrink-0 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1B7EC8] focus-visible:ring-offset-2"
+                className="inline-flex items-center justify-center rounded-[10px] border-[1.5px] border-[#1B7EC8] bg-white sm:bg-white/65 backdrop-blur-[2px] w-full sm:w-auto px-6 py-3.5 text-[15px] sm:text-[16px] font-medium text-[#126FB5] hover:bg-white hover:border-[#0B84E5] hover:text-[#0B84E5] transition-all duration-150 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1B7EC8] focus-visible:ring-offset-2"
               >
                 {t.hero.ctaSecondary}
               </a>
