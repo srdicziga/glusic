@@ -9,3 +9,50 @@ html {
   font-family: var(--font-sans);
 }
 
+/* ==========================================================================
+   ZAČETEK DODANE KODE (CSS): Vijugasta cesta v ozadju in premikajoči se tovornjak
+   ========================================================================== */
+
+.scrolling-road-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  user-select: none;
+}
+
+.scrolling-road-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Mehka senca pod celotnim tovornjakom za globino na cesti */
+.scrolling-truck-group {
+  filter: drop-shadow(0 8px 14px rgba(11, 22, 44, 0.22));
+  will-change: transform;
+}
+
+/* Utripajoči rumeni rotacijski luči na strehi kabine (izredni prevoz) */
+@keyframes beaconPulse {
+  0%, 100% {
+    opacity: 0.45;
+    r: 3.2px;
+  }
+  50% {
+    opacity: 1;
+    r: 5.5px;
+  }
+}
+
+.truck-beacon-glow {
+  animation: beaconPulse 1.2s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   KONEC DODANE KODE (CSS)
+   ========================================================================== */

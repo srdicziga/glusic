@@ -372,7 +372,8 @@ export default function WhyChooseUs() {
         background: 'linear-gradient(180deg, #F6FAFF 0%, #EDF5FC 100%)',
       }}
     >
-      <div className="mx-auto max-w-[1120px] px-4 sm:px-8 lg:px-10">
+      {/* === DODANO: relative z-10, da vsebina stoji nad vijugasto SVG cesto v ozadju === */}
+      <div className="relative z-10 mx-auto max-w-[1120px] px-4 sm:px-8 lg:px-10">
         {/* Section Header & Editorial Story */}
         <div className="text-center">
           <p className="text-[13px] sm:text-[14px] font-semibold uppercase tracking-[0.06em] text-[#1D6FB3]">
@@ -402,7 +403,7 @@ export default function WhyChooseUs() {
           {features.map(({ id, title, description, Icon }) => (
             <div
               key={id}
-              className="flex flex-col items-center text-center rounded-[16px] bg-white px-6 py-9 sm:px-6 sm:py-10 shadow-[0_12px_32px_-8px_rgba(14,30,62,0.07),0_4px_12px_-2px_rgba(14,30,62,0.03)] border border-white transition-transform duration-200 hover:-translate-y-0.5"
+              className="flex flex-col items-center text-center rounded-[16px] bg-white/95 backdrop-blur-[2px] px-6 py-9 sm:px-6 sm:py-10 shadow-[0_12px_32px_-8px_rgba(14,30,62,0.07),0_4px_12px_-2px_rgba(14,30,62,0.03)] border border-white transition-transform duration-200 hover:-translate-y-0.5"
             >
               {/* Duotone Icon */}
               <div className="flex items-center justify-center">
@@ -425,7 +426,7 @@ export default function WhyChooseUs() {
         {/* Statistics Module Below Feature Cards */}
         <div
           ref={statsRef}
-          className="mt-6 sm:mt-8 rounded-[16px] bg-white border border-[#E4ECF5] shadow-[0_12px_32px_-8px_rgba(14,30,62,0.08),0_4px_12px_-2px_rgba(14,30,62,0.03)] px-6 py-6 sm:py-7"
+          className="mt-6 sm:mt-8 rounded-[16px] bg-white/95 backdrop-blur-[2px] border border-[#E4ECF5] shadow-[0_12px_32px_-8px_rgba(14,30,62,0.08),0_4px_12px_-2px_rgba(14,30,62,0.03)] px-6 py-6 sm:py-7"
         >
           <div className="grid grid-cols-1 sm:grid-cols-3 items-center">
             {stats.map((stat, index) => {

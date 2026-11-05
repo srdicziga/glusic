@@ -130,12 +130,13 @@ export default function ContactAndFooter() {
       <section
         id="kontakt"
         aria-labelledby="contact-heading"
-        className="relative w-full pt-16 sm:pt-20 lg:pt-24 pb-20 sm:pb-24 scroll-mt-6"
+        className="relative w-full pt-16 sm:pt-20 lg:pt-24 pb-36 sm:pb-44 scroll-mt-6"
         style={{
           background: 'linear-gradient(180deg, #F5F9FE 0%, #EEF5FC 100%)',
         }}
       >
-        <div className="mx-auto max-w-[1140px] px-4 sm:px-8 lg:px-10">
+        {/* === DODANO: relative z-10, da vsebina stoji nad vijugasto SVG cesto v ozadju === */}
+        <div className="relative z-10 mx-auto max-w-[1140px] px-4 sm:px-8 lg:px-10">
           {/* Section Header */}
           <div className="text-center">
             <p className="text-[13px] sm:text-[14px] font-semibold uppercase tracking-[0.06em] text-[#1D6FB3]">
@@ -371,7 +372,7 @@ export default function ContactAndFooter() {
 
                 {/* Company Contact Details Inside Card */}
                 <div className="px-6 py-5 sm:px-7 sm:py-6 text-left bg-white">
-                  <p className="text-[15.5px] font-bold text-[#0B162C]">Glušič d.o.o.</p>
+                  <p className="text-[15.5px] font-bold text-[#0B162C]">Glušič prevozništvo d.o.o.</p>
                   <div className="mt-1.5 space-y-1 text-[14px] text-[#1E293B] leading-[1.5]">
                     <p>
                       {t.contact.phoneLabel}:{' '}
@@ -402,8 +403,8 @@ export default function ContactAndFooter() {
         </div>
       </section>
 
-      {/* Footer Section */}
-      <footer className="w-full bg-[#E9EEF4] border-t border-[#DAE2EC] text-[#1E293B]">
+      {/* Footer Section (relative z-10, da se vijugasta cesta zaključi ob robu noge) */}
+      <footer className="relative z-10 w-full bg-[#E9EEF4] border-t border-[#DAE2EC] text-[#1E293B]">
         <div className="mx-auto max-w-[1140px] px-4 sm:px-8 lg:px-10 py-8 sm:py-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
             {/* Column 1: Logo & Tagline */}
@@ -464,7 +465,7 @@ export default function ContactAndFooter() {
             {/* Column 3: Company Info, Facebook Button & Language Selector */}
             <div className="md:col-span-4 flex items-start justify-between gap-4">
               <div className="text-[12.5px] text-[#1E293B] space-y-1 leading-[1.45]">
-                <p className="font-medium text-[#0B162C]">{t.footer.companyContactTitle}</p>
+                <p className="text-[14px] font-bold text-[#0B162C]">{t.footer.companyContactTitle}</p>
                 <p>
                   {t.contact.phoneLabel}: 031 340 920
                 </p>

@@ -62,7 +62,8 @@ export default function ServicesAndFleetModern() {
         background: 'linear-gradient(180deg, #EDF5FC 0%, #F5F9FE 100%)',
       }}
     >
-      <div className="mx-auto max-w-[1380px] px-4 sm:px-8 lg:px-12">
+      {/* === DODANO: relative z-10, da vsebina stoji nad vijugasto SVG cesto v ozadju === */}
+      <div className="relative z-10 mx-auto max-w-[1380px] px-4 sm:px-8 lg:px-12">
         {/* Section Header */}
         <div className="text-center max-w-[980px] mx-auto">
           <p className="text-[13px] sm:text-[14px] font-semibold uppercase tracking-[0.06em] text-[#1D6FB3]">
@@ -81,7 +82,7 @@ export default function ServicesAndFleetModern() {
       {/* 5 Modules Row Stretched to 90% of the Page Width */}
       <div
         id="vozni-park"
-        className="mx-auto mt-12 sm:mt-14 scroll-mt-24 w-[90%] max-w-[90vw]"
+        className="relative z-10 mx-auto mt-12 sm:mt-14 scroll-mt-24 w-[90%] max-w-[90vw]"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 xl:gap-7 items-stretch">
           {services.map((service) => {
@@ -89,7 +90,7 @@ export default function ServicesAndFleetModern() {
               <article
                 key={`${service.id}-wide`}
                 onClick={() => setSelectedId(`${service.id}-wide`)}
-                className="group flex flex-col rounded-[20px] bg-white p-2.5 sm:p-3.5 border border-[#E2ECF6] shadow-[0_14px_34px_-8px_rgba(14,30,62,0.09),0_4px_14px_-3px_rgba(14,30,62,0.04)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_42px_-8px_rgba(14,30,62,0.13)] cursor-pointer"
+                className="group flex flex-col rounded-[20px] bg-white/95 backdrop-blur-[2px] p-2.5 sm:p-3.5 border border-[#E2ECF6] shadow-[0_14px_34px_-8px_rgba(14,30,62,0.09),0_4px_14px_-3px_rgba(14,30,62,0.04)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_42px_-8px_rgba(14,30,62,0.13)] cursor-pointer"
               >
                 {/* Framed High-Resolution Inner Image + Real Top-Left Button */}
                 <div className="relative w-full aspect-[450/547] overflow-hidden rounded-[14px] bg-slate-100">

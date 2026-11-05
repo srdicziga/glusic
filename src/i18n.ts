@@ -236,8 +236,8 @@ export const SITE_TRANSLATIONS: Record<Language, SiteTranslations> = {
       tagline:
         'Specialisti za izredne in zahtevne prevoze ter prevoz gradbene mehanizacije.',
       quickLinksTitle: 'Hitre povezave',
-      companyContactTitle: 'Glušič d.o.o. / Kontakt',
-      rightsReserved: '© 2026 Glušič d.o.o. Vse pravice pridržane.',
+      companyContactTitle: 'Kontakt',
+      rightsReserved: '© 2026 Glušič prevozništvo d.o.o. Vse pravice pridržane.',
     },
   },
   EN: {
@@ -360,8 +360,8 @@ export const SITE_TRANSLATIONS: Record<Language, SiteTranslations> = {
       tagline:
         'Specialists in exceptional and demanding transport and construction machinery logistics.',
       quickLinksTitle: 'Quick Links',
-      companyContactTitle: 'Glušič d.o.o. / Contact',
-      rightsReserved: '© 2026 Glušič d.o.o. All rights reserved.',
+      companyContactTitle: 'Contact',
+      rightsReserved: '© 2026 Glušič prevozništvo d.o.o. All rights reserved.',
     },
   },
   DE: {
@@ -484,8 +484,8 @@ export const SITE_TRANSLATIONS: Record<Language, SiteTranslations> = {
       tagline:
         'Spezialisten für Sonder- und Schwertransporte sowie den Transport von Baumaschinen.',
       quickLinksTitle: 'Schnelllinks',
-      companyContactTitle: 'Glušič d.o.o. / Kontakt',
-      rightsReserved: '© 2026 Glušič d.o.o. Alle Rechte vorbehalten.',
+      companyContactTitle: 'Kontakt',
+      rightsReserved: '© 2026 Glušič prevozništvo d.o.o. Alle Rechte vorbehalten.',
     },
   },
 };
